@@ -1,0 +1,18 @@
+version: 2.1
+
+commands:
+  print_pipeline_id:
+    steps:
+      - run: echo ${CIRCLE_WORKFLOW_ID}
+
+jobs:
+  my_job:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - print_pipeline_id
+
+workflows:
+  my_workflow:
+    jobs:
+      - my_job
